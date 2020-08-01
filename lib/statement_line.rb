@@ -9,7 +9,8 @@ class StatementLine
   end
 
   def to_s
-    HEADER.map { |column_name| transaction.send(column_name) }.join(DELIMITER)
+    # Only the first three columns specified in HEADER can be accessed from the transaction. The balance is pulled from the StatementLine instance variable.
+    HEADER[0..2].map { |column_name| transaction.send(column_name) }.join(DELIMITER) + DELIMITER + balance.to_s
   end
 
   private

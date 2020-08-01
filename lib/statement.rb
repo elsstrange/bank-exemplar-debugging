@@ -19,7 +19,8 @@ class Statement
   end
 
   def to_s
-    statement_lines.map(&:to_s).unshift(statement_header).join("\n")
+    # Statement lines need to be reversed, so that most recent transactions print at the top.
+    statement_lines.reverse.map(&:to_s).unshift(statement_header).join("\n")
   end
 
   private

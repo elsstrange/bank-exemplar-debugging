@@ -18,7 +18,8 @@ class Transaction
   end
 
   def debit
-    value if debit?
+    # Debit should present its value as negative, to distinguish it from credit.
+    value * -1 if debit?
   end
 
   private
